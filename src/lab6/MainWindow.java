@@ -39,6 +39,7 @@ public class MainWindow extends javax.swing.JFrame implements DrawingEngine{
 
     public MainWindow() {
         initComponents();
+        setLocationRelativeTo(null);
         this.shapes = new ArrayList<>();
     }
 
@@ -60,7 +61,10 @@ public class MainWindow extends javax.swing.JFrame implements DrawingEngine{
         setTitle("Vector Drawing Application");
 
         canvas1.setBackground(new java.awt.Color(255, 255, 255));
+        canvas1.setCursor(new java.awt.Cursor(java.awt.Cursor.CROSSHAIR_CURSOR));
 
+        drawLineButton.setBackground(new java.awt.Color(0, 0, 0));
+        drawLineButton.setForeground(new java.awt.Color(255, 255, 255));
         drawLineButton.setText("LineSegment");
         drawLineButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -68,6 +72,8 @@ public class MainWindow extends javax.swing.JFrame implements DrawingEngine{
             }
         });
 
+        drawRectangleButton.setBackground(new java.awt.Color(0, 0, 0));
+        drawRectangleButton.setForeground(new java.awt.Color(255, 255, 255));
         drawRectangleButton.setText("Rectangle");
         drawRectangleButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -75,6 +81,8 @@ public class MainWindow extends javax.swing.JFrame implements DrawingEngine{
             }
         });
 
+        drawSquareButton.setBackground(new java.awt.Color(0, 0, 0));
+        drawSquareButton.setForeground(new java.awt.Color(255, 255, 255));
         drawSquareButton.setText("Square");
         drawSquareButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -82,6 +90,8 @@ public class MainWindow extends javax.swing.JFrame implements DrawingEngine{
             }
         });
 
+        drawCircleButton.setBackground(new java.awt.Color(0, 0, 0));
+        drawCircleButton.setForeground(new java.awt.Color(255, 255, 255));
         drawCircleButton.setText("Circle");
         drawCircleButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -89,8 +99,18 @@ public class MainWindow extends javax.swing.JFrame implements DrawingEngine{
             }
         });
 
-        jLabel1.setText("Select Shape");
+        shapesList.setBackground(new java.awt.Color(0, 0, 0));
+        shapesList.setForeground(new java.awt.Color(255, 255, 255));
 
+        jLabel1.setBackground(new java.awt.Color(102, 102, 102));
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel1.setText("Select Shape");
+        jLabel1.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
+        jLabel1.setOpaque(true);
+
+        removeButton.setBackground(new java.awt.Color(0, 0, 0));
+        removeButton.setForeground(new java.awt.Color(255, 255, 255));
         removeButton.setText("Remove");
         removeButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -98,6 +118,8 @@ public class MainWindow extends javax.swing.JFrame implements DrawingEngine{
             }
         });
 
+        colorizeButton.setBackground(new java.awt.Color(0, 0, 0));
+        colorizeButton.setForeground(new java.awt.Color(255, 255, 255));
         colorizeButton.setText("colorize");
         colorizeButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -146,11 +168,11 @@ public class MainWindow extends javax.swing.JFrame implements DrawingEngine{
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(shapesList, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
+                        .addComponent(shapesList, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(55, 55, 55)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(removeButton)
-                            .addComponent(colorizeButton)))
+                            .addComponent(removeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(colorizeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(canvas1, javax.swing.GroupLayout.PREFERRED_SIZE, 284, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );

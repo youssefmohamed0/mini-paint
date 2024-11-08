@@ -129,7 +129,7 @@ public class DrawSquareWindow extends javax.swing.JFrame {
         Point position = new Point(Integer.parseInt(squarePositionX.getText()), Integer.parseInt(squarePositionY.getText()));
         Map properties = new HashMap<>();
         properties.put("sideLength", Double.valueOf(squareSideLength.getText()));
-        Square square = new Square(squareName.getText(), Color.yellow, Color.yellow, position, properties);
+        Square square = new Square(Color.yellow, Color.yellow, position, properties);
         square.draw(canvas);
         mainWindow.addShape(square);
         dispose();

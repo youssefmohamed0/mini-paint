@@ -1,5 +1,8 @@
 package lab6;
 
+import java.awt.Canvas;
+import java.awt.Color;
+import java.awt.Graphics;
 import java.util.ArrayList;
 
 public class MainWindow extends javax.swing.JFrame implements DrawingEngine{
@@ -15,12 +18,21 @@ public class MainWindow extends javax.swing.JFrame implements DrawingEngine{
     @Override
     public void addShape(Shape shape) {
         shapes.add(shape);
+        shapesList.addItem(shape.toString() + shapes.indexOf(shape));
     }
 
     @Override
     public void removeShape(Shape shape) {
+        shapes.remove(shape);
+    }
+
+    @Override
+    public void refresh(Graphics canvas) {
+        canvas.setColor(Color.white);
+        canvas.fillRect(0, 0, canvas1.getSize().width, canvas1.getSize().height);
+        
         for (int i = 0; i < shapes.size(); i++) {
-            
+            shapes.get(i).draw(canvas);
         }
     }
 
@@ -40,6 +52,7 @@ public class MainWindow extends javax.swing.JFrame implements DrawingEngine{
         drawCircleButton = new javax.swing.JButton();
         shapesList = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
+        removeButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Vector Drawing Application");
@@ -74,9 +87,14 @@ public class MainWindow extends javax.swing.JFrame implements DrawingEngine{
             }
         });
 
-        shapesList.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
         jLabel1.setText("Select Shape");
+
+        removeButton.setText("Remove");
+        removeButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                removeButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -94,9 +112,11 @@ public class MainWindow extends javax.swing.JFrame implements DrawingEngine{
                 .addGap(100, 100, 100))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(34, 34, 34)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(shapesList, 0, 220, Short.MAX_VALUE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(shapesList, 0, 220, Short.MAX_VALUE)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(removeButton))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 56, Short.MAX_VALUE)
                 .addComponent(canvas1, javax.swing.GroupLayout.PREFERRED_SIZE, 670, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -115,7 +135,9 @@ public class MainWindow extends javax.swing.JFrame implements DrawingEngine{
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(shapesList, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(shapesList, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(removeButton))
                     .addComponent(canvas1, javax.swing.GroupLayout.PREFERRED_SIZE, 284, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -131,6 +153,7 @@ public class MainWindow extends javax.swing.JFrame implements DrawingEngine{
 
     private void drawLineButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_drawLineButtonActionPerformed
         // Draw line
+        refresh(canvas1.getGraphics());
     }//GEN-LAST:event_drawLineButtonActionPerformed
 
     private void drawRectangleButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_drawRectangleButtonActionPerformed
@@ -141,6 +164,13 @@ public class MainWindow extends javax.swing.JFrame implements DrawingEngine{
         // Draw circle
     }//GEN-LAST:event_drawCircleButtonActionPerformed
 
+    private void removeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeButtonActionPerformed
+        // TODO add your handling code here:
+        removeShape(shapes.get(shapesList.getSelectedIndex()));
+        shapesList.removeItemAt(shapesList.getSelectedIndex());
+        refresh(canvas1.getGraphics());
+    }//GEN-LAST:event_removeButtonActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private java.awt.Canvas canvas1;
@@ -149,6 +179,7 @@ public class MainWindow extends javax.swing.JFrame implements DrawingEngine{
     private javax.swing.JButton drawRectangleButton;
     private javax.swing.JButton drawSquareButton;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton removeButton;
     private javax.swing.JComboBox<String> shapesList;
     // End of variables declaration//GEN-END:variables
 }

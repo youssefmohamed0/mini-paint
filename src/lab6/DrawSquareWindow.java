@@ -5,6 +5,7 @@ import java.awt.Graphics;
 import java.awt.Point;
 import java.util.HashMap;
 import java.util.Map;
+import javax.swing.JOptionPane;
 
 public class DrawSquareWindow extends javax.swing.JFrame {
     private Graphics canvas;
@@ -30,13 +31,6 @@ public class DrawSquareWindow extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Draw Square");
-        setAlwaysOnTop(true);
-
-        squareSideLength.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                squareSideLengthActionPerformed(evt);
-            }
-        });
 
         jLabel1.setBackground(new java.awt.Color(102, 102, 102));
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
@@ -117,19 +111,49 @@ public class DrawSquareWindow extends javax.swing.JFrame {
 
     private void drawButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_drawButtonActionPerformed
         // TODO add your handling code here:
-        Point position = new Point(Integer.parseInt(squarePositionX.getText()), Integer.parseInt(squarePositionY.getText()));
-        Map properties = new HashMap<>();
-        properties.put("sideLength", Double.valueOf(squareSideLength.getText()));
-        Square square = new Square(Color.black, Color.white, position, properties);
-        square.draw(canvas);
-        mainWindow.addShape(square);
-        dispose();
+        if (validateFields()) {
+            Point position = new Point(Integer.parseInt(squarePositionX.getText()), Integer.parseInt(squarePositionY.getText()));
+            Map properties = new HashMap<>();
+            properties.put("sideLength", Double.valueOf(squareSideLength.getText()));
+            Square square = new Square(Color.black, Color.white, position, properties);
+            square.draw(canvas);
+            mainWindow.addShape(square);
+            dispose();
+        }
+        else {
+            resetFields();
+        }
+        
     }//GEN-LAST:event_drawButtonActionPerformed
-
-    private void squareSideLengthActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_squareSideLengthActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_squareSideLengthActionPerformed
-
+    public boolean validateFields() {
+        if (!isNumeric(squarePositionX.getText())) {
+            JOptionPane.showMessageDialog(this,"Please Enter valid X position","Error", 2);
+            return false;
+        }
+        if (!isNumeric(squarePositionY.getText())) {
+            JOptionPane.showMessageDialog(this,"Please Enter valid Y postion","Error", 2);
+            return false;
+        }
+        if (!isNumeric(squareSideLength.getText())) {
+            JOptionPane.showMessageDialog(this,"Please Enter valid side Length","Error", 2);
+            return false;
+        }
+        return true;
+    }
+    public void resetFields() {
+        squarePositionX.setText("");
+        squarePositionY.setText("");
+        squareSideLength.setText("");
+    }
+    private boolean isNumeric(String str) {
+        for (int i = 0; i < str.length(); i++) {
+            if ( !Character.isDigit(str.charAt(i)) ) {
+                return false;
+            }
+        }
+        return true;            
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton drawButton;
     private javax.swing.JLabel jLabel1;

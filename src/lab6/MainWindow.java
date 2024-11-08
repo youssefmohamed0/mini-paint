@@ -54,6 +54,7 @@ public class MainWindow extends javax.swing.JFrame implements DrawingEngine{
         shapesList = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
         removeButton = new javax.swing.JButton();
+        colorizeButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Vector Drawing Application");
@@ -97,6 +98,13 @@ public class MainWindow extends javax.swing.JFrame implements DrawingEngine{
             }
         });
 
+        colorizeButton.setText("colorize");
+        colorizeButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                colorizeButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -113,11 +121,13 @@ public class MainWindow extends javax.swing.JFrame implements DrawingEngine{
                 .addGap(100, 100, 100))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(34, 34, 34)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(shapesList, 0, 220, Short.MAX_VALUE)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(removeButton))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(shapesList, javax.swing.GroupLayout.Alignment.LEADING, 0, 220, Short.MAX_VALUE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(colorizeButton)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(removeButton)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 56, Short.MAX_VALUE)
                 .addComponent(canvas1, javax.swing.GroupLayout.PREFERRED_SIZE, 670, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -138,7 +148,9 @@ public class MainWindow extends javax.swing.JFrame implements DrawingEngine{
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(shapesList, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(removeButton))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(removeButton)
+                            .addComponent(colorizeButton)))
                     .addComponent(canvas1, javax.swing.GroupLayout.PREFERRED_SIZE, 284, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -176,9 +188,21 @@ public class MainWindow extends javax.swing.JFrame implements DrawingEngine{
         }
     }//GEN-LAST:event_removeButtonActionPerformed
 
+    private void colorizeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_colorizeButtonActionPerformed
+        // TODO add your handling code here:
+        try {
+            Shape shapeToColorize = shapes.get(shapesList.getSelectedIndex());
+            ColorizeWindow colorizeWindow = new ColorizeWindow(shapeToColorize, canvas1.getGraphics(), this);
+            colorizeWindow.setVisible(true);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "No shapes to colorize","Error",2);
+        }
+    }//GEN-LAST:event_colorizeButtonActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private java.awt.Canvas canvas1;
+    private javax.swing.JButton colorizeButton;
     private javax.swing.JButton drawCircleButton;
     private javax.swing.JButton drawLineButton;
     private javax.swing.JButton drawRectangleButton;

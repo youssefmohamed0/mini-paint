@@ -37,12 +37,14 @@
           </Group>
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="1" attributes="0">
-                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="shapesList" pref="220" max="32767" attributes="0"/>
-                      <Component id="jLabel1" max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                  <Component id="shapesList" alignment="0" pref="220" max="32767" attributes="0"/>
+                  <Component id="jLabel1" alignment="0" max="32767" attributes="0"/>
+                  <Group type="102" attributes="0">
+                      <Component id="colorizeButton" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Component id="removeButton" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <Component id="removeButton" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace pref="56" max="32767" attributes="0"/>
               <Component id="canvas1" min="-2" pref="670" max="-2" attributes="0"/>
@@ -67,7 +69,10 @@
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="shapesList" min="-2" pref="35" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="removeButton" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="removeButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="colorizeButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
                   <Component id="canvas1" min="-2" pref="284" max="-2" attributes="0"/>
               </Group>
@@ -137,6 +142,14 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="removeButtonActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="colorizeButton">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="colorize"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="colorizeButtonActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>

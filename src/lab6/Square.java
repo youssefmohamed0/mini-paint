@@ -27,9 +27,11 @@ public class Square implements Shape {
 
     @Override
     public void draw(Graphics canvas) {
-        canvas.setColor(color);
         int side = properties.get("sideLength").intValue();
+        canvas.setColor(color);
         canvas.drawRect(position.x, position.y, side, side);
+        canvas.setColor(FillColor);
+        canvas.fillRect(position.x+1, position.y+1, side-1, side-1);
     }
     
     @Override

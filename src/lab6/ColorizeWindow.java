@@ -23,6 +23,7 @@ public class ColorizeWindow extends javax.swing.JFrame {
         confirmColorize = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Colorize");
 
         colorChooser.setCursor(new java.awt.Cursor(java.awt.Cursor.CROSSHAIR_CURSOR));
 

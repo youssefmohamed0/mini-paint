@@ -120,12 +120,16 @@ public class DrawSquareWindow extends javax.swing.JFrame {
             mainWindow.addShape(square);
             dispose();
         }
-        else {
-            resetFields();
-        }
+//        else {
+//            resetFields();
+//        }
         
     }//GEN-LAST:event_drawButtonActionPerformed
     public boolean validateFields() {
+        if (squarePositionX.getText().isBlank() || squarePositionY.getText().isBlank() || squareSideLength.getText().isBlank()) {
+            JOptionPane.showMessageDialog(this,"Please fill all fields","Error", 2);
+            return false;
+        }
         if (!isNumeric(squarePositionX.getText())) {
             JOptionPane.showMessageDialog(this,"Please Enter valid X position","Error", 2);
             return false;

@@ -4,6 +4,7 @@ import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 public class MainWindow extends javax.swing.JFrame implements DrawingEngine{
 
@@ -166,9 +167,13 @@ public class MainWindow extends javax.swing.JFrame implements DrawingEngine{
 
     private void removeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeButtonActionPerformed
         // TODO add your handling code here:
-        removeShape(shapes.get(shapesList.getSelectedIndex()));
-        shapesList.removeItemAt(shapesList.getSelectedIndex());
-        refresh(canvas1.getGraphics());
+        try {
+            removeShape(shapes.get(shapesList.getSelectedIndex()));
+            shapesList.removeItemAt(shapesList.getSelectedIndex());
+            refresh(canvas1.getGraphics());
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "No shapes to remove","Error",2);
+        }
     }//GEN-LAST:event_removeButtonActionPerformed
 
 

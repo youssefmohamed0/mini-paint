@@ -188,11 +188,12 @@ public class MainWindow extends javax.swing.JFrame implements DrawingEngine{
 
     private void drawLineButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_drawLineButtonActionPerformed
         // Draw line
-        refresh(canvas1.getGraphics());
     }//GEN-LAST:event_drawLineButtonActionPerformed
 
     private void drawRectangleButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_drawRectangleButtonActionPerformed
         // Draw rectangle
+        DrawRectangleWindow drawRectangleWindow = new DrawRectangleWindow(canvas1.getGraphics(), this);
+        drawRectangleWindow.setVisible(true);
     }//GEN-LAST:event_drawRectangleButtonActionPerformed
 
     private void drawCircleButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_drawCircleButtonActionPerformed

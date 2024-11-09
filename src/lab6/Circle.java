@@ -22,7 +22,7 @@ public class Circle extends ShapeTemplate{
         canvas.setColor(getColor());
         canvas.drawOval(getPosition().x, getPosition().y, radius, radius);
         canvas.setColor(getFillColor()); 
-       canvas.fillOval(getPosition().x+1, getPosition().y+1, radius-1, radius-1);
+        canvas.fillOval(getPosition().x+1, getPosition().y+1, radius-1, radius-1);
     }
     
 }

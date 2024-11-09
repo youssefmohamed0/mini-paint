@@ -198,6 +198,8 @@ public class MainWindow extends javax.swing.JFrame implements DrawingEngine{
 
     private void drawCircleButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_drawCircleButtonActionPerformed
         // Draw circle
+        DrawCircleWindow drawCircleWindow = new DrawCircleWindow(canvas1.getGraphics(), this);
+        drawCircleWindow.setVisible(true);
     }//GEN-LAST:event_drawCircleButtonActionPerformed
 
     private void removeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeButtonActionPerformed

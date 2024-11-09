@@ -10,6 +10,7 @@ public class MainWindow extends javax.swing.JFrame implements DrawingEngine{
 
 //    private Shape[] shapes;
     private ArrayList<Shape> shapes;
+    private static int counter = 0;
 
     @Override
     public Shape[] getShapes() {
@@ -19,7 +20,9 @@ public class MainWindow extends javax.swing.JFrame implements DrawingEngine{
     @Override
     public void addShape(Shape shape) {
         shapes.add(shape);
-        shapesList.addItem(shape.toString() + shapes.indexOf(shape));
+//        shapesList.addItem(shape.toString() + shapes.indexOf(shape));
+        shapesList.addItem(shape.toString() + Integer.toString(counter));
+        counter++;
     }
 
     @Override

@@ -7,7 +7,7 @@ import java.util.HashMap;
 import java.util.Map;
 import javax.swing.JOptionPane;
 
-public class DrawCircleWindow extends javax.swing.JFrame {
+public class DrawCircleWindow extends javax.swing.JFrame implements Validation{
     private Graphics canvas;
     private MainWindow mainWindow;
     public DrawCircleWindow(Graphics canvas, MainWindow mainWindow) {
@@ -122,32 +122,25 @@ public class DrawCircleWindow extends javax.swing.JFrame {
         }
 
     }//GEN-LAST:event_drawButtonActionPerformed
+    @Override
     public boolean validateFields() {
         if (circlePositionX.getText().isBlank() || circlePositionY.getText().isBlank() || circleRadius.getText().isBlank()) {
             JOptionPane.showMessageDialog(this,"Please fill all fields","Error", 2);
             return false;
         }
-        if (!isNumeric(circlePositionX.getText())) {
+        if (!Validation.isNumeric(circlePositionX.getText())) {
             JOptionPane.showMessageDialog(this,"Please Enter valid X position","Error", 2);
             return false;
         }
-        if (!isNumeric(circlePositionY.getText())) {
+        if (!Validation.isNumeric(circlePositionY.getText())) {
             JOptionPane.showMessageDialog(this,"Please Enter valid Y postion","Error", 2);
             return false;
         }
-        if (!isNumeric(circleRadius.getText())) {
+        if (!Validation.isNumeric(circleRadius.getText())) {
             JOptionPane.showMessageDialog(this,"Please Enter valid radius","Error", 2);
             return false;
         }
         return true;
-    }
-    private boolean isNumeric(String str) {
-        for (int i = 0; i < str.length(); i++) {
-            if ( !Character.isDigit(str.charAt(i)) ) {
-                return false;
-            }
-        }
-        return true;            
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField circlePositionX;

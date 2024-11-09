@@ -7,7 +7,7 @@ import java.util.HashMap;
 import java.util.Map;
 import javax.swing.JOptionPane;
 
-public class DrawSquareWindow extends javax.swing.JFrame {
+public class DrawSquareWindow extends javax.swing.JFrame implements Validation{
     private Graphics canvas;
     private MainWindow mainWindow;
     public DrawSquareWindow(Graphics canvas, MainWindow mainWindow) {
@@ -121,44 +121,28 @@ public class DrawSquareWindow extends javax.swing.JFrame {
             mainWindow.addShape(square);
             dispose();
         }
-//        else {
-//            resetFields();
-//        }
         
     }//GEN-LAST:event_drawButtonActionPerformed
+    @Override
     public boolean validateFields() {
         if (squarePositionX.getText().isBlank() || squarePositionY.getText().isBlank() || squareSideLength.getText().isBlank()) {
             JOptionPane.showMessageDialog(this,"Please fill all fields","Error", 2);
             return false;
         }
-        if (!isNumeric(squarePositionX.getText())) {
+        if (!Validation.isNumeric(squarePositionX.getText())) {
             JOptionPane.showMessageDialog(this,"Please Enter valid X position","Error", 2);
             return false;
         }
-        if (!isNumeric(squarePositionY.getText())) {
+        if (!Validation.isNumeric(squarePositionY.getText())) {
             JOptionPane.showMessageDialog(this,"Please Enter valid Y postion","Error", 2);
             return false;
         }
-        if (!isNumeric(squareSideLength.getText())) {
+        if (!Validation.isNumeric(squareSideLength.getText())) {
             JOptionPane.showMessageDialog(this,"Please Enter valid side Length","Error", 2);
             return false;
         }
         return true;
-    }
-    public void resetFields() {
-        squarePositionX.setText("");
-        squarePositionY.setText("");
-        squareSideLength.setText("");
-    }
-    private boolean isNumeric(String str) {
-        for (int i = 0; i < str.length(); i++) {
-            if ( !Character.isDigit(str.charAt(i)) ) {
-                return false;
-            }
-        }
-        return true;            
-    }
-    
+    }    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton drawButton;
     private javax.swing.JLabel jLabel1;

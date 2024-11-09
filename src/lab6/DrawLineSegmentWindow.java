@@ -4,7 +4,7 @@ import java.awt.*;
 import java.util.*;
 import javax.swing.JOptionPane;
 
-public class DrawLineSegmentWindow extends javax.swing.JFrame {
+public class DrawLineSegmentWindow extends javax.swing.JFrame implements Validation{
     private Graphics canvas;
     private MainWindow mainWindow;
     public DrawLineSegmentWindow(Graphics canvas, MainWindow mainWindow) {
@@ -135,28 +135,21 @@ public class DrawLineSegmentWindow extends javax.swing.JFrame {
             dispose();
         }
     }//GEN-LAST:event_drawButtonActionPerformed
+    @Override
     public boolean validateFields() {
         if (lineX1.getText().isBlank() || lineY1.getText().isBlank() || lineX2.getText().isBlank() || lineY2.getText().isBlank()) {
             JOptionPane.showMessageDialog(this,"Please fill all fields","Error", 2);
             return false;
         }
-        if (!isNumeric(lineX1.getText()) || !isNumeric(lineX2.getText())) {
+        if (!Validation.isNumeric(lineX1.getText()) || !Validation.isNumeric(lineX2.getText())) {
             JOptionPane.showMessageDialog(this,"Please Enter valid X position","Error", 2);
             return false;
         }
-        if (!isNumeric(lineY1.getText()) || !isNumeric(lineY2.getText())) {
+        if (!Validation.isNumeric(lineY1.getText()) || !Validation.isNumeric(lineY2.getText())) {
             JOptionPane.showMessageDialog(this,"Please Enter valid Y postion","Error", 2);
             return false;
         }
         return true;
-    }
-    private boolean isNumeric(String str) {
-        for (int i = 0; i < str.length(); i++) {
-            if ( !Character.isDigit(str.charAt(i)) ) {
-                return false;
-            }
-        }
-        return true;            
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton drawButton;

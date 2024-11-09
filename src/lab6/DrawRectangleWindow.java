@@ -4,7 +4,7 @@ import java.awt.*;
 import java.util.*;
 import javax.swing.JOptionPane;
 
-public class DrawRectangleWindow extends javax.swing.JFrame {
+public class DrawRectangleWindow extends javax.swing.JFrame implements Validation{
     private Graphics canvas;
     private MainWindow mainWindow;
     public DrawRectangleWindow(Graphics canvas, MainWindow mainWindow) {
@@ -135,43 +135,30 @@ public class DrawRectangleWindow extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_drawButtonActionPerformed
 
+    @Override
     public boolean validateFields() {
         if (rectanglePositionX.getText().isBlank() || rectanglePositionY.getText().isBlank() || rectangleLength.getText().isBlank() || rectangleWidth.getText().isBlank()) {
             JOptionPane.showMessageDialog(this,"Please fill all fields","Error", 2);
             return false;
         }
-        if (!isNumeric(rectanglePositionX.getText())) {
+        if (!Validation.isNumeric(rectanglePositionX.getText())) {
             JOptionPane.showMessageDialog(this,"Please Enter valid X position","Error", 2);
             return false;
         }
-        if (!isNumeric(rectanglePositionY.getText())) {
+        if (!Validation.isNumeric(rectanglePositionY.getText())) {
             JOptionPane.showMessageDialog(this,"Please Enter valid Y postion","Error", 2);
             return false;
         }
-        if (!isNumeric(rectangleLength.getText())) {
+        if (!Validation.isNumeric(rectangleLength.getText())) {
             JOptionPane.showMessageDialog(this,"Please Enter valid length","Error", 2);
             return false;
         }
-        if (!isNumeric(rectangleWidth.getText())) {
+        if (!Validation.isNumeric(rectangleWidth.getText())) {
             JOptionPane.showMessageDialog(this,"Please Enter valid width","Error", 2);
             return false;
         }
         return true;
     } 
-    public void resetFields() {
-        rectanglePositionX.setText("");
-        rectanglePositionY.setText("");
-        rectangleLength.setText("");
-        rectangleWidth.setText("");
-    }
-    private boolean isNumeric(String str) {
-        for (int i = 0; i < str.length(); i++) {
-            if ( !Character.isDigit(str.charAt(i)) ) {
-                return false;
-            }
-        }
-        return true;            
-    }
  
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton drawButton;

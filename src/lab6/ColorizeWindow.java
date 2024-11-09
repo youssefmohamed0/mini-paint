@@ -66,6 +66,7 @@ public class ColorizeWindow extends javax.swing.JFrame {
     private void confirmColorizeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmColorizeActionPerformed
         // TODO add your handling code here:
         shapeToColorize.setFillColor(colorChooser.getColor());
+        shapeToColorize.setColor(colorChooser.getColor());
         mainWindow.refresh(canvas);
         dispose();
     }//GEN-LAST:event_confirmColorizeActionPerformed

@@ -30,6 +30,7 @@ public class ColorizeWindow extends javax.swing.JFrame {
         confirmColorize.setBackground(new java.awt.Color(0, 0, 0));
         confirmColorize.setForeground(new java.awt.Color(255, 255, 255));
         confirmColorize.setText("confirm");
+        confirmColorize.setFocusPainted(false);
         confirmColorize.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 confirmColorizeActionPerformed(evt);

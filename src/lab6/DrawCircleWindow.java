@@ -55,6 +55,7 @@ public class DrawCircleWindow extends javax.swing.JFrame {
         drawButton.setBackground(new java.awt.Color(0, 0, 0));
         drawButton.setForeground(new java.awt.Color(255, 255, 255));
         drawButton.setText("Draw");
+        drawButton.setFocusPainted(false);
         drawButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 drawButtonActionPerformed(evt);

@@ -28,7 +28,7 @@ public class DrawLineSegmentWindow extends javax.swing.JFrame {
         lineY1 = new javax.swing.JTextField();
         lineX2 = new javax.swing.JTextField();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel1.setBackground(new java.awt.Color(102, 102, 102));
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
@@ -54,6 +54,7 @@ public class DrawLineSegmentWindow extends javax.swing.JFrame {
         drawButton.setBackground(new java.awt.Color(0, 0, 0));
         drawButton.setForeground(new java.awt.Color(255, 255, 255));
         drawButton.setText("Draw");
+        drawButton.setFocusPainted(false);
         drawButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 drawButtonActionPerformed(evt);

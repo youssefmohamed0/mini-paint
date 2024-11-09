@@ -66,6 +66,7 @@ public class MainWindow extends javax.swing.JFrame implements DrawingEngine{
         drawLineButton.setBackground(new java.awt.Color(0, 0, 0));
         drawLineButton.setForeground(new java.awt.Color(255, 255, 255));
         drawLineButton.setText("LineSegment");
+        drawLineButton.setFocusPainted(false);
         drawLineButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 drawLineButtonActionPerformed(evt);
@@ -75,6 +76,7 @@ public class MainWindow extends javax.swing.JFrame implements DrawingEngine{
         drawRectangleButton.setBackground(new java.awt.Color(0, 0, 0));
         drawRectangleButton.setForeground(new java.awt.Color(255, 255, 255));
         drawRectangleButton.setText("Rectangle");
+        drawRectangleButton.setFocusPainted(false);
         drawRectangleButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 drawRectangleButtonActionPerformed(evt);
@@ -84,6 +86,7 @@ public class MainWindow extends javax.swing.JFrame implements DrawingEngine{
         drawSquareButton.setBackground(new java.awt.Color(0, 0, 0));
         drawSquareButton.setForeground(new java.awt.Color(255, 255, 255));
         drawSquareButton.setText("Square");
+        drawSquareButton.setFocusPainted(false);
         drawSquareButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 drawSquareButtonActionPerformed(evt);
@@ -93,6 +96,7 @@ public class MainWindow extends javax.swing.JFrame implements DrawingEngine{
         drawCircleButton.setBackground(new java.awt.Color(0, 0, 0));
         drawCircleButton.setForeground(new java.awt.Color(255, 255, 255));
         drawCircleButton.setText("Circle");
+        drawCircleButton.setFocusPainted(false);
         drawCircleButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 drawCircleButtonActionPerformed(evt);
@@ -112,6 +116,7 @@ public class MainWindow extends javax.swing.JFrame implements DrawingEngine{
         removeButton.setBackground(new java.awt.Color(0, 0, 0));
         removeButton.setForeground(new java.awt.Color(255, 255, 255));
         removeButton.setText("Remove");
+        removeButton.setFocusPainted(false);
         removeButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 removeButtonActionPerformed(evt);
@@ -121,6 +126,7 @@ public class MainWindow extends javax.swing.JFrame implements DrawingEngine{
         colorizeButton.setBackground(new java.awt.Color(0, 0, 0));
         colorizeButton.setForeground(new java.awt.Color(255, 255, 255));
         colorizeButton.setText("colorize");
+        colorizeButton.setFocusPainted(false);
         colorizeButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 colorizeButtonActionPerformed(evt);

@@ -188,6 +188,8 @@ public class MainWindow extends javax.swing.JFrame implements DrawingEngine{
 
     private void drawLineButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_drawLineButtonActionPerformed
         // Draw line
+        DrawLineSegmentWindow drawLineSegmentWindow = new DrawLineSegmentWindow(canvas1.getGraphics(), this);
+        drawLineSegmentWindow.setVisible(true);
     }//GEN-LAST:event_drawLineButtonActionPerformed
 
     private void drawRectangleButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_drawRectangleButtonActionPerformed

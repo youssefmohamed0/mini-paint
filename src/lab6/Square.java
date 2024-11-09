@@ -7,17 +7,8 @@ import java.util.Map;
 import javax.swing.text.Position;
 
 public class Square extends ShapeTemplate{
-//    private Double sideLength;
-//    private Color color;
-//    private Color FillColor;
-//    private Point position;
-//    private Map<String, Double> properties;
 
     public Square(Color color, Color FillColor, Point position, Map<String, Double> properties) {
-//        this.color = color;
-//        this.FillColor = FillColor;
-//        this.position = position;
-//        this.properties = properties;
         super(color, FillColor, position, properties);    
     }
 

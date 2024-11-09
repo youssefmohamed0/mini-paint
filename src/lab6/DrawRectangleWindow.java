@@ -29,6 +29,7 @@ public class DrawRectangleWindow extends javax.swing.JFrame implements Validatio
         jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Draw Rectangle");
 
         jLabel1.setBackground(new java.awt.Color(102, 102, 102));
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));

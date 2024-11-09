@@ -1,10 +1,7 @@
 package lab6;
 
-import java.awt.Color;
-import java.awt.Graphics;
-import java.awt.Point;
-import java.util.HashMap;
-import java.util.Map;
+import java.awt.*;
+import java.util.*;
 import javax.swing.JOptionPane;
 
 public class DrawCircleWindow extends javax.swing.JFrame implements Validation{
@@ -29,7 +26,8 @@ public class DrawCircleWindow extends javax.swing.JFrame implements Validation{
         jLabel3 = new javax.swing.JLabel();
         drawButton = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Draw Circle");
 
         jLabel1.setBackground(new java.awt.Color(102, 102, 102));
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));

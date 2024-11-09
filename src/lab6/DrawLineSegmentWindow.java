@@ -29,6 +29,7 @@ public class DrawLineSegmentWindow extends javax.swing.JFrame implements Validat
         lineX2 = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Draw Line Segment");
 
         jLabel1.setBackground(new java.awt.Color(102, 102, 102));
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));

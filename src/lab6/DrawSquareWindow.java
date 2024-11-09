@@ -1,10 +1,8 @@
 package lab6;
 
-import java.awt.Color;
-import java.awt.Graphics;
-import java.awt.Point;
-import java.util.HashMap;
-import java.util.Map;
+
+import java.awt.*;
+import java.util.*;
 import javax.swing.JOptionPane;
 
 public class DrawSquareWindow extends javax.swing.JFrame implements Validation{

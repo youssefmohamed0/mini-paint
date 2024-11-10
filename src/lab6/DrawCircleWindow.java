@@ -4,10 +4,11 @@ import java.awt.*;
 import java.util.*;
 import javax.swing.JOptionPane;
 
-public class DrawCircleWindow extends javax.swing.JFrame implements Validation{
+public class DrawCircleWindow extends javax.swing.JDialog implements Validation{
     private Graphics canvas;
     private MainWindow mainWindow;
     public DrawCircleWindow(Graphics canvas, MainWindow mainWindow) {
+        setModal(true);
         initComponents();
         setLocationRelativeTo(mainWindow);
         this.canvas = canvas;

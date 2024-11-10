@@ -19,9 +19,9 @@ public class Square extends ShapeTemplate{
     @Override
     public void draw(Graphics canvas) {
         int side = getProperties().get("sideLength").intValue();
+        canvas.setColor(getFillColor());
+        canvas.fillRect(getPosition().x, getPosition().y, side, side);
         canvas.setColor(getColor());
         canvas.drawRect(getPosition().x, getPosition().y, side, side);
-        canvas.setColor(getFillColor());
-        canvas.fillRect(getPosition().x+1, getPosition().y+1, side-1, side-1);
     }    
 }

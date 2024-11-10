@@ -19,10 +19,10 @@ public class Circle extends ShapeTemplate{
     @Override
     public void draw(Graphics canvas) {
         int radius = getProperties().get("radius").intValue();
+        canvas.setColor(getFillColor()); 
+        canvas.fillOval(getPosition().x, getPosition().y, radius, radius);
         canvas.setColor(getColor());
         canvas.drawOval(getPosition().x, getPosition().y, radius, radius);
-        canvas.setColor(getFillColor()); 
-        canvas.fillOval(getPosition().x+1, getPosition().y+1, radius-1, radius-1);
     }
     
 }

@@ -20,10 +20,10 @@ public class Rectangle extends ShapeTemplate {
     public void draw(Graphics canvas) {
         int length = getProperties().get("length").intValue();
         int width = getProperties().get("width").intValue();
+        canvas.setColor(getFillColor());
+        canvas.fillRect(getPosition().x, getPosition().y, length, width);
         canvas.setColor(getColor());
         canvas.drawRect(getPosition().x, getPosition().y, length, width);
-        canvas.setColor(getFillColor());
-        canvas.fillRect(getPosition().x+1, getPosition().y+1, length-1, width-1);
     }
     
 }

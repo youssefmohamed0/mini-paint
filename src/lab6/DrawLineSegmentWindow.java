@@ -126,7 +126,6 @@ public class DrawLineSegmentWindow extends javax.swing.JFrame implements Validat
         // TODO add your handling code here:
         if (validateFields()) {
             Point position = new Point(Integer.parseInt(lineX1.getText()), Integer.parseInt(lineY1.getText()));
-            Point position2 = new Point(Integer.parseInt(lineX2.getText()), Integer.parseInt(lineY2.getText()));
             Map properties = new HashMap<>();
             properties.put("x2", Double.valueOf(lineX2.getText()));
             properties.put("y2", Double.valueOf(lineY2.getText()));

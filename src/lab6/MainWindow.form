@@ -74,12 +74,12 @@
                   <Component id="drawCircleButton" alignment="3" min="-2" pref="36" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="32767" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
                   <Group type="102" attributes="0">
                       <Component id="jLabel2" min="-2" pref="34" max="-2" attributes="0"/>
-                      <EmptySpace max="32767" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="shapesList" min="-2" pref="34" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="146" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="removeButton" alignment="3" min="-2" pref="38" max="-2" attributes="0"/>
                           <Component id="colorizeButton" alignment="3" min="-2" pref="38" max="-2" attributes="0"/>
@@ -87,7 +87,7 @@
                       <EmptySpace min="-2" pref="316" max="-2" attributes="0"/>
                       <Component id="jLabel1" min="-2" pref="24" max="-2" attributes="0"/>
                   </Group>
-                  <Component id="canvas1" min="-2" pref="600" max="-2" attributes="0"/>
+                  <Component id="canvas1" min="-2" pref="720" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="32767" attributes="0"/>
           </Group>
@@ -190,7 +190,7 @@
           <Color blue="ff" green="ff" red="ff" type="rgb"/>
         </Property>
         <Property name="horizontalAlignment" type="int" value="2"/>
-        <Property name="text" type="java.lang.String" value="Canvas Size: 600 x 720"/>
+        <Property name="text" type="java.lang.String" value="Canvas Size: 720 x 720"/>
         <Property name="horizontalTextPosition" type="int" value="10"/>
         <Property name="opaque" type="boolean" value="true"/>
       </Properties>

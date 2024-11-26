@@ -127,11 +127,11 @@ public class DrawCircleWindow extends javax.swing.JDialog implements Validation{
             JOptionPane.showMessageDialog(this,"Please fill all fields","Error", 2);
             return false;
         }
-        if (!Validation.isNumeric(circlePositionX.getText())) {
+        if (!Validation.isNumeric(circlePositionX.getText()) || !Validation.isWithinRange(circlePositionX.getText())) {
             JOptionPane.showMessageDialog(this,"Please Enter valid X position","Error", 2);
             return false;
         }
-        if (!Validation.isNumeric(circlePositionY.getText())) {
+        if (!Validation.isNumeric(circlePositionY.getText()) || !Validation.isWithinRange(circlePositionY.getText())) {
             JOptionPane.showMessageDialog(this,"Please Enter valid Y postion","Error", 2);
             return false;
         }

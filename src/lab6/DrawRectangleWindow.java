@@ -143,11 +143,11 @@ public class DrawRectangleWindow extends javax.swing.JDialog implements Validati
             JOptionPane.showMessageDialog(this,"Please fill all fields","Error", 2);
             return false;
         }
-        if (!Validation.isNumeric(rectanglePositionX.getText())) {
+        if (!Validation.isNumeric(rectanglePositionX.getText()) || !Validation.isWithinRange(rectanglePositionX.getText())) {
             JOptionPane.showMessageDialog(this,"Please Enter valid X position","Error", 2);
             return false;
         }
-        if (!Validation.isNumeric(rectanglePositionY.getText())) {
+        if (!Validation.isNumeric(rectanglePositionY.getText()) || !Validation.isWithinRange(rectanglePositionY.getText())) {
             JOptionPane.showMessageDialog(this,"Please Enter valid Y postion","Error", 2);
             return false;
         }

@@ -142,11 +142,11 @@ public class DrawLineSegmentWindow extends javax.swing.JDialog implements Valida
             JOptionPane.showMessageDialog(this,"Please fill all fields","Error", 2);
             return false;
         }
-        if (!Validation.isNumeric(lineX1.getText()) || !Validation.isNumeric(lineX2.getText())) {
+        if (!Validation.isNumeric(lineX1.getText()) || !Validation.isNumeric(lineX2.getText()) || !Validation.isWithinRange(lineX1.getText())) {
             JOptionPane.showMessageDialog(this,"Please Enter valid X position","Error", 2);
             return false;
         }
-        if (!Validation.isNumeric(lineY1.getText()) || !Validation.isNumeric(lineY2.getText())) {
+        if (!Validation.isNumeric(lineY1.getText()) || !Validation.isNumeric(lineY2.getText()) || !Validation.isWithinRange(lineY1.getText())) {
             JOptionPane.showMessageDialog(this,"Please Enter valid Y postion","Error", 2);
             return false;
         }

@@ -9,5 +9,11 @@ public interface Validation {
         }
         return true;            
     }
+    public static boolean isWithinRange(String str) {
+        if ( Integer.parseInt(str) > 720) {
+            return false;
+        }
+        return true;
+    }
     public boolean validateFields();
 }

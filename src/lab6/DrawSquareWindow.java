@@ -128,11 +128,11 @@ public class DrawSquareWindow extends javax.swing.JDialog implements Validation{
             JOptionPane.showMessageDialog(this,"Please fill all fields","Error", 2);
             return false;
         }
-        if (!Validation.isNumeric(squarePositionX.getText())) {
+        if (!Validation.isNumeric(squarePositionX.getText()) || !Validation.isWithinRange(squarePositionX.getText())) {
             JOptionPane.showMessageDialog(this,"Please Enter valid X position","Error", 2);
             return false;
         }
-        if (!Validation.isNumeric(squarePositionY.getText())) {
+        if (!Validation.isNumeric(squarePositionY.getText()) || !Validation.isWithinRange(squarePositionY.getText())) {
             JOptionPane.showMessageDialog(this,"Please Enter valid Y postion","Error", 2);
             return false;
         }

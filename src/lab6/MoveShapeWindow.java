@@ -4,7 +4,7 @@ import java.awt.Graphics;
 import java.awt.Point;
 import javax.swing.JOptionPane;
 
-public class MoveShapeWindow extends javax.swing.JDialog implements Validation{
+public class MoveShapeWindow extends javax.swing.JDialog implements Validation {
     private Shape shapeToMove;
     private Graphics canvas;
     private MainWindow mainWindow;

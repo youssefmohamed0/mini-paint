@@ -47,7 +47,7 @@ public class DrawCircleWindow extends javax.swing.JDialog implements Validation{
         jLabel3.setBackground(new java.awt.Color(102, 102, 102));
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setText("Side");
+        jLabel3.setText("Radius");
         jLabel3.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
         jLabel3.setOpaque(true);
 

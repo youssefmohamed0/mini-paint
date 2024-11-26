@@ -61,6 +61,7 @@ public class MainWindow extends javax.swing.JFrame implements DrawingEngine{
         colorizeButton = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         moveButton = new javax.swing.JButton();
+        resizeButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Vector Drawing Application");
@@ -155,6 +156,16 @@ public class MainWindow extends javax.swing.JFrame implements DrawingEngine{
             }
         });
 
+        resizeButton.setBackground(new java.awt.Color(0, 0, 0));
+        resizeButton.setForeground(new java.awt.Color(255, 255, 255));
+        resizeButton.setText("Resize");
+        resizeButton.setFocusPainted(false);
+        resizeButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                resizeButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -179,15 +190,16 @@ public class MainWindow extends javax.swing.JFrame implements DrawingEngine{
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                     .addComponent(shapesList, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addComponent(colorizeButton)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(colorizeButton)
+                                            .addComponent(moveButton, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE))
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(removeButton))
-                                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(20, 20, 20))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addComponent(moveButton, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(removeButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(resizeButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                                .addGap(20, 20, 20)))
                         .addComponent(canvas1, javax.swing.GroupLayout.PREFERRED_SIZE, 720, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap())))
         );
@@ -211,7 +223,9 @@ public class MainWindow extends javax.swing.JFrame implements DrawingEngine{
                             .addComponent(removeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(colorizeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
-                        .addComponent(moveButton, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(moveButton, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(resizeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(260, 260, 260)
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(canvas1, javax.swing.GroupLayout.PREFERRED_SIZE, 720, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -278,6 +292,32 @@ public class MainWindow extends javax.swing.JFrame implements DrawingEngine{
         }
     }//GEN-LAST:event_moveButtonActionPerformed
 
+    private void resizeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resizeButtonActionPerformed
+        // TODO add your handling code here:
+        try {
+            Shape shapeToResize = shapes.get(shapesList.getSelectedIndex());
+            if (shapeToResize instanceof Circle) {
+                ResizeCircleWindow resizeCircleWindow = new ResizeCircleWindow(shapeToResize, canvas1.getGraphics(), this);
+                resizeCircleWindow.setVisible(true);
+            }
+            else if (shapeToResize instanceof Rectangle) {
+                ResizeRectangleWindow resizeRectangleWindow = new ResizeRectangleWindow(shapeToResize, canvas1.getGraphics(), this);
+                resizeRectangleWindow.setVisible(true);
+            }
+//            else if (shapeToResize instanceof Square) {
+//                ResizeSquareWindow resizeCircleWindow = new ResizeSquareWindow(shapeToResize, canvas1.getGraphics(), this);
+//                resizeCircleWindow.setVisible(true);
+//            }
+//            else if (shapeToResize instanceof LineSegment) {
+//                ResizeCircleWindow resizeCircleWindow = new ResizeCircleWindow(shapeToResize, canvas1.getGraphics(), this);
+//                resizeCircleWindow.setVisible(true);
+//            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "No shapes to resize","Error",2);
+            System.out.println(e);
+        }
+    }//GEN-LAST:event_resizeButtonActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private java.awt.Canvas canvas1;
     private javax.swing.JButton colorizeButton;
@@ -289,6 +329,7 @@ public class MainWindow extends javax.swing.JFrame implements DrawingEngine{
     private javax.swing.JLabel jLabel2;
     private javax.swing.JButton moveButton;
     private javax.swing.JButton removeButton;
+    private javax.swing.JButton resizeButton;
     private javax.swing.JComboBox<String> shapesList;
     // End of variables declaration//GEN-END:variables
 }

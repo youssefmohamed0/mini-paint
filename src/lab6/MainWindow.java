@@ -1,6 +1,7 @@
 package lab6;
 
 import java.awt.Color;
+import java.awt.Frame;
 import java.awt.Graphics;
 import java.awt.Point;
 import java.io.File;
@@ -70,6 +71,14 @@ public class MainWindow extends javax.swing.JFrame implements DrawingEngine{
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Vector Drawing Application");
+        addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentMoved(java.awt.event.ComponentEvent evt) {
+                formComponentMoved(evt);
+            }
+            public void componentResized(java.awt.event.ComponentEvent evt) {
+                formComponentResized(evt);
+            }
+        });
 
         canvas1.setBackground(new java.awt.Color(255, 255, 255));
         canvas1.setCursor(new java.awt.Cursor(java.awt.Cursor.CROSSHAIR_CURSOR));
@@ -372,6 +381,16 @@ public class MainWindow extends javax.swing.JFrame implements DrawingEngine{
             refresh(canvas1.getGraphics());
         }
     }//GEN-LAST:event_loadButtonActionPerformed
+
+    private void formComponentMoved(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentMoved
+        // TODO add your handling code here:
+        refresh(canvas1.getGraphics());
+    }//GEN-LAST:event_formComponentMoved
+
+    private void formComponentResized(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentResized
+        // TODO add your handling code here:
+        refresh(canvas1.getGraphics());
+    }//GEN-LAST:event_formComponentResized
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private java.awt.Canvas canvas1;

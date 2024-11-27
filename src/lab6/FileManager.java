@@ -41,8 +41,8 @@ public class FileManager {
             return new Rectangle(color, fillColor, position, properties);
         }
         if (name.charAt(0) == 'l') {
-            double x2 = Double.parseDouble(stringMembers[9]);
-            double y2 = Double.parseDouble(stringMembers[10]);
+            double x2 = Double.parseDouble(stringMembers[10]);
+            double y2 = Double.parseDouble(stringMembers[9]);
             Map properties = new HashMap<>();
             properties.put("x2", x2);
             properties.put("y2", y2);

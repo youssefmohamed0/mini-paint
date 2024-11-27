@@ -27,7 +27,7 @@ public class ResizeCircleWindow extends javax.swing.JDialog implements Validatio
         jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Resize");
+        setTitle("Resize Circle");
 
         resizeButton.setBackground(new java.awt.Color(0, 0, 0));
         resizeButton.setForeground(new java.awt.Color(255, 255, 255));

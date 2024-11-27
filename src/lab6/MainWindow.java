@@ -310,7 +310,6 @@ public class MainWindow extends javax.swing.JFrame implements DrawingEngine{
             Shape shapeToColorize = shapes.get(shapesList.getSelectedIndex());
             ColorizeWindow colorizeWindow = new ColorizeWindow(shapeToColorize, canvas1.getGraphics(), this);
             colorizeWindow.setVisible(true);
-            System.out.println("colored shape : " + shapeToColorize.getLineRepresentation());
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "No shapes to colorize","Error",2);
         }
@@ -339,17 +338,16 @@ public class MainWindow extends javax.swing.JFrame implements DrawingEngine{
                 ResizeRectangleWindow resizeRectangleWindow = new ResizeRectangleWindow(shapeToResize, canvas1.getGraphics(), this);
                 resizeRectangleWindow.setVisible(true);
             }
-//            else if (shapeToResize instanceof Square) {
-//                ResizeSquareWindow resizeCircleWindow = new ResizeSquareWindow(shapeToResize, canvas1.getGraphics(), this);
-//                resizeCircleWindow.setVisible(true);
-//            }
-//            else if (shapeToResize instanceof LineSegment) {
-//                ResizeCircleWindow resizeCircleWindow = new ResizeCircleWindow(shapeToResize, canvas1.getGraphics(), this);
-//                resizeCircleWindow.setVisible(true);
-//            }
+            else if (shapeToResize instanceof Square) {
+                ResizeSquareWindow resizeSquareWindow = new ResizeSquareWindow(shapeToResize, canvas1.getGraphics(), this);
+                resizeSquareWindow.setVisible(true);
+            }
+            else if (shapeToResize instanceof LineSegment) {
+                ResizeLineSegmentWindow resizeLineSegmentWindow = new ResizeLineSegmentWindow(shapeToResize, canvas1.getGraphics(), this);
+                resizeLineSegmentWindow.setVisible(true);
+            }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "No shapes to resize","Error",2);
-            System.out.println(e);
         }
     }//GEN-LAST:event_resizeButtonActionPerformed
 

@@ -4,11 +4,11 @@ import java.awt.Graphics;
 import java.util.Map;
 import javax.swing.JOptionPane;
 
-public class ResizeRectangleWindow extends javax.swing.JDialog implements Validation {
+public class ResizeLineSegmentWindow extends javax.swing.JDialog implements Validation {
     private Shape shapeToResize;
     private Graphics canvas;
     private MainWindow mainWindow;
-    public ResizeRectangleWindow(Shape shapeToResize, Graphics canvas, MainWindow mainWindow) {
+    public ResizeLineSegmentWindow(Shape shapeToResize, Graphics canvas, MainWindow mainWindow) {
         initComponents();
         setModal(true);
         setLocationRelativeTo(mainWindow);
@@ -16,19 +16,18 @@ public class ResizeRectangleWindow extends javax.swing.JDialog implements Valida
         this.canvas = canvas;
         this.mainWindow = mainWindow; 
     }
-
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         resizeButton = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
-        newRectangleWidth = new javax.swing.JTextField();
+        newLineY = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        newRectangleLength = new javax.swing.JTextField();
+        newLineX = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Resize Rectangle");
+        setTitle("Resize Line Segment");
 
         resizeButton.setBackground(new java.awt.Color(0, 0, 0));
         resizeButton.setForeground(new java.awt.Color(255, 255, 255));
@@ -43,14 +42,14 @@ public class ResizeRectangleWindow extends javax.swing.JDialog implements Valida
         jLabel3.setBackground(new java.awt.Color(102, 102, 102));
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setText("Length");
+        jLabel3.setText("X2");
         jLabel3.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
         jLabel3.setOpaque(true);
 
         jLabel4.setBackground(new java.awt.Color(102, 102, 102));
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel4.setText("Width");
+        jLabel4.setText("Y2");
         jLabel4.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
         jLabel4.setOpaque(true);
 
@@ -59,7 +58,7 @@ public class ResizeRectangleWindow extends javax.swing.JDialog implements Valida
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -68,24 +67,22 @@ public class ResizeRectangleWindow extends javax.swing.JDialog implements Valida
                         .addGap(6, 6, 6)
                         .addComponent(resizeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(newRectangleLength, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(newRectangleWidth, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(newLineX, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(newLineY, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(newRectangleLength, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(newLineX, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(newRectangleWidth, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(newLineY, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(resizeButton)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(resizeButton))
         );
 
         pack();
@@ -94,36 +91,34 @@ public class ResizeRectangleWindow extends javax.swing.JDialog implements Valida
     private void resizeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resizeButtonActionPerformed
         // TODO add your handling code here:
         if (validateFields()) {
-            Map rectangleNewProperties = shapeToResize.getProperties();
-            rectangleNewProperties.put("length", Double.valueOf(newRectangleLength.getText()));
-            rectangleNewProperties.put("width", Double.valueOf(newRectangleWidth.getText()));
-            shapeToResize.setProperties(rectangleNewProperties);
+            Map lineSegmentNewProperties = shapeToResize.getProperties();
+            lineSegmentNewProperties.put("x2", Double.valueOf(newLineX.getText()));
+            lineSegmentNewProperties.put("y2", Double.valueOf(newLineY.getText()));
+            shapeToResize.setProperties(lineSegmentNewProperties);
             mainWindow.refresh(canvas);
             dispose();
         }
     }//GEN-LAST:event_resizeButtonActionPerformed
-@Override
     public boolean validateFields() {
-        if (newRectangleLength.getText().isBlank() || newRectangleWidth.getText().isBlank()) {
+        if (newLineX.getText().isBlank() || newLineY.getText().isBlank()) {
             JOptionPane.showMessageDialog(this,"Please fill all fields","Error", 2);
             return false;
         }
-        if (!Validation.isNumeric(newRectangleLength.getText())) {
-            JOptionPane.showMessageDialog(this,"Please Enter valid length","Error", 2);
+        if (!Validation.isNumeric(newLineX.getText()) || !Validation.isWithinRange(newLineX.getText())) {
+            JOptionPane.showMessageDialog(this,"Please Enter valid X position","Error", 2);
             return false;
         }
-        if (!Validation.isNumeric(newRectangleWidth.getText())) {
-            JOptionPane.showMessageDialog(this,"Please Enter valid width","Error", 2);
+        if (!Validation.isNumeric(newLineY.getText()) || !Validation.isWithinRange(newLineY.getText())) {
+            JOptionPane.showMessageDialog(this,"Please Enter valid Y postion","Error", 2);
             return false;
         }
         return true;
     }
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JTextField newRectangleLength;
-    private javax.swing.JTextField newRectangleWidth;
+    private javax.swing.JTextField newLineX;
+    private javax.swing.JTextField newLineY;
     private javax.swing.JButton resizeButton;
     // End of variables declaration//GEN-END:variables
 }

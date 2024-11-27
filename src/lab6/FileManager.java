@@ -13,11 +13,7 @@ import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class FileManager {
-//    private static String fileContentString = "";
-//    private static String fileName;
-//    private static MainWindow mainWindow;
-    
+public class FileManager {    
     private static Shape getShapeFromString(String lineRepresentation) {
         String[] stringMembers = lineRepresentation.split(",");
         String name = stringMembers[0];
@@ -30,7 +26,28 @@ public class FileManager {
             properties.put("radius", circleRadius);
             return new Circle(color, fillColor, position, properties);
         }
-            /// do same for other shapes
+        if (name.charAt(0) == 's') {
+            double squareSide = Double.parseDouble(stringMembers[9]);
+            Map properties = new HashMap<>();
+            properties.put("sideLength", squareSide);
+            return new Square(color, fillColor, position, properties);
+        }
+        if (name.charAt(0) == 'r') {
+            double rectangleLength = Double.parseDouble(stringMembers[9]);
+            double rectangleWidth = Double.parseDouble(stringMembers[10]);
+            Map properties = new HashMap<>();
+            properties.put("length", rectangleLength);
+            properties.put("width", rectangleWidth);
+            return new Rectangle(color, fillColor, position, properties);
+        }
+        if (name.charAt(0) == 'l') {
+            double x2 = Double.parseDouble(stringMembers[9]);
+            double y2 = Double.parseDouble(stringMembers[10]);
+            Map properties = new HashMap<>();
+            properties.put("x2", x2);
+            properties.put("y2", y2);
+            return new LineSegment(color, fillColor, position, properties);
+        }
         return null;
     }
     public static void readFromFile(File f, MainWindow mainWindow) {
@@ -52,7 +69,6 @@ public class FileManager {
     public static void saveToFile(File f, MainWindow mainWindow) {
         FileWriter writer = null;
         Shape[] shapes = (Shape[])mainWindow.getShapes();
-        System.out.println(shapes.length);
         try {
             writer = new FileWriter(f);
             for (int i = 0; i < mainWindow.getShapes().length; i++) {

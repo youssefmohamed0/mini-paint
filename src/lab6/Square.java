@@ -13,7 +13,11 @@ public class Square extends ShapeTemplate{
 
     @Override
     public String toString() {
-        return "Square";
+        return "square";
+    }
+    @Override
+    public String getLineRepresentation() {
+        return toString() + "," + super.getLineRepresentation();
     }
 
     @Override

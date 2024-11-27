@@ -14,7 +14,11 @@ public class LineSegment extends ShapeTemplate {
 
     @Override
     public String toString() {
-        return "LineSegment";
+        return "lineSegment";
+    }
+    @Override
+    public String getLineRepresentation() {
+        return toString() + "," + super.getLineRepresentation();
     }
 
     @Override

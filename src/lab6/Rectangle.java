@@ -13,7 +13,11 @@ public class Rectangle extends ShapeTemplate {
 
     @Override
     public String toString() {
-        return "Rectangle";
+        return "rectangle";
+    }
+    @Override
+    public String getLineRepresentation() {
+        return toString() + "," + super.getLineRepresentation();
     }
 
     @Override

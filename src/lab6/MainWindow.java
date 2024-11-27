@@ -22,7 +22,6 @@ public class MainWindow extends javax.swing.JFrame implements DrawingEngine{
     @Override
     public void addShape(Shape shape) {
         shapes.add(shape);
-//        shapesList.addItem(shape.toString() + shapes.indexOf(shape));
         shapesList.addItem(shape.toString() + Integer.toString(counter));
         counter++;
     }
@@ -30,6 +29,8 @@ public class MainWindow extends javax.swing.JFrame implements DrawingEngine{
     @Override
     public void removeShape(Shape shape) {
         shapes.remove(shape);
+        shapesList.removeItemAt(shapesList.getSelectedIndex());
+        counter--;
     }
 
     @Override
@@ -296,7 +297,7 @@ public class MainWindow extends javax.swing.JFrame implements DrawingEngine{
         // TODO add your handling code here:
         try {
             removeShape(shapes.get(shapesList.getSelectedIndex()));
-            shapesList.removeItemAt(shapesList.getSelectedIndex());
+//            shapesList.removeItemAt(shapesList.getSelectedIndex());
             refresh(canvas1.getGraphics());
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "No shapes to remove","Error",2);

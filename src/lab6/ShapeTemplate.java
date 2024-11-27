@@ -57,4 +57,10 @@ public abstract class ShapeTemplate implements Shape{
     public void setProperties(Map<String, Double> properties) {
         this.properties = properties;
     }
+
+    @Override
+    public String getLineRepresentation() {
+        return color.getRed() + "," + color.getGreen() + "," + color.getBlue() + "," + FillColor.getRed() + "," + FillColor.getGreen() + "," + FillColor.getBlue() + "," + position.x + "," + position.y + "," + properties.values().toString().replaceAll("[\\[\\]]", "") + "\n";
+    }
+    
 }

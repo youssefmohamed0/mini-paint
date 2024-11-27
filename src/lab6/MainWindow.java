@@ -3,7 +3,9 @@ package lab6;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Point;
+import java.io.File;
 import java.util.ArrayList;
+import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 
 public class MainWindow extends javax.swing.JFrame implements DrawingEngine{
@@ -14,7 +16,7 @@ public class MainWindow extends javax.swing.JFrame implements DrawingEngine{
 
     @Override
     public Shape[] getShapes() {
-        return (Shape[])shapes.toArray();
+        return shapes.toArray(new Shape[0]);
     }
 
     @Override
@@ -62,6 +64,8 @@ public class MainWindow extends javax.swing.JFrame implements DrawingEngine{
         jLabel2 = new javax.swing.JLabel();
         moveButton = new javax.swing.JButton();
         resizeButton = new javax.swing.JButton();
+        saveButton = new javax.swing.JButton();
+        loadButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Vector Drawing Application");
@@ -166,12 +170,32 @@ public class MainWindow extends javax.swing.JFrame implements DrawingEngine{
             }
         });
 
+        saveButton.setBackground(new java.awt.Color(0, 0, 0));
+        saveButton.setForeground(new java.awt.Color(255, 255, 255));
+        saveButton.setText("Save");
+        saveButton.setFocusPainted(false);
+        saveButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                saveButtonActionPerformed(evt);
+            }
+        });
+
+        loadButton.setBackground(new java.awt.Color(0, 0, 0));
+        loadButton.setForeground(new java.awt.Color(255, 255, 255));
+        loadButton.setText("Load");
+        loadButton.setFocusPainted(false);
+        loadButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                loadButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(24, Short.MAX_VALUE)
+                .addContainerGap(23, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(drawCircleButton, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -188,17 +212,22 @@ public class MainWindow extends javax.swing.JFrame implements DrawingEngine{
                                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(shapesList, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                        .addComponent(shapesList, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(colorizeButton)
+                                                .addComponent(moveButton, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                                .addComponent(removeButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addComponent(resizeButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addComponent(loadButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                                     .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(colorizeButton)
-                                            .addComponent(moveButton, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(removeButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(resizeButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                                        .addComponent(saveButton, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(144, 144, 144)))
                                 .addGap(20, 20, 20)))
                         .addComponent(canvas1, javax.swing.GroupLayout.PREFERRED_SIZE, 720, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap())))
@@ -226,7 +255,11 @@ public class MainWindow extends javax.swing.JFrame implements DrawingEngine{
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(moveButton, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(resizeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(260, 260, 260)
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(saveButton, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(loadButton, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(204, 204, 204)
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(canvas1, javax.swing.GroupLayout.PREFERRED_SIZE, 720, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -276,6 +309,7 @@ public class MainWindow extends javax.swing.JFrame implements DrawingEngine{
             Shape shapeToColorize = shapes.get(shapesList.getSelectedIndex());
             ColorizeWindow colorizeWindow = new ColorizeWindow(shapeToColorize, canvas1.getGraphics(), this);
             colorizeWindow.setVisible(true);
+            System.out.println("colored shape : " + shapeToColorize.getLineRepresentation());
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "No shapes to colorize","Error",2);
         }
@@ -318,6 +352,28 @@ public class MainWindow extends javax.swing.JFrame implements DrawingEngine{
         }
     }//GEN-LAST:event_resizeButtonActionPerformed
 
+    private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveButtonActionPerformed
+        // TODO add your handling code here:
+        JFileChooser chooser = new JFileChooser();
+        int r = chooser.showSaveDialog(null);
+        if (r == JFileChooser.APPROVE_OPTION) {
+            File f = chooser.getSelectedFile();
+            FileManager.saveToFile(f, this);
+            refresh(canvas1.getGraphics());
+        }
+    }//GEN-LAST:event_saveButtonActionPerformed
+
+    private void loadButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loadButtonActionPerformed
+        // TODO add your handling code here:
+        JFileChooser chooser = new JFileChooser();
+        int r = chooser.showDialog(null,"Load");
+        if (r == JFileChooser.APPROVE_OPTION) {
+            File f = chooser.getSelectedFile();
+            FileManager.readFromFile(f, this);
+            refresh(canvas1.getGraphics());
+        }
+    }//GEN-LAST:event_loadButtonActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private java.awt.Canvas canvas1;
     private javax.swing.JButton colorizeButton;
@@ -327,9 +383,11 @@ public class MainWindow extends javax.swing.JFrame implements DrawingEngine{
     private javax.swing.JButton drawSquareButton;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JButton loadButton;
     private javax.swing.JButton moveButton;
     private javax.swing.JButton removeButton;
     private javax.swing.JButton resizeButton;
+    private javax.swing.JButton saveButton;
     private javax.swing.JComboBox<String> shapesList;
     // End of variables declaration//GEN-END:variables
 }

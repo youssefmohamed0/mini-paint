@@ -13,9 +13,14 @@ public class Circle extends ShapeTemplate{
 
     @Override
     public String toString() {
-        return "Circle";
+        return "circle";
     }
 
+    @Override
+    public String getLineRepresentation() {
+        return toString() + "," + super.getLineRepresentation();
+    }
+    
     @Override
     public void draw(Graphics canvas) {
         int radius = getProperties().get("radius").intValue();

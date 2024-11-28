@@ -2,6 +2,7 @@ package lab6;
 
 import java.awt.Graphics;
 import java.awt.Point;
+import java.util.Map;
 import javax.swing.JOptionPane;
 
 public class MoveShapeWindow extends javax.swing.JDialog implements Validation {
@@ -92,6 +93,13 @@ public class MoveShapeWindow extends javax.swing.JDialog implements Validation {
     private void moveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_moveButtonActionPerformed
         // TODO add your handling code here:
         if (validateFields()) {
+            if (shapeToMove instanceof LineSegment) {
+                Map lineSegmentNewProperties = shapeToMove.getProperties();
+                lineSegmentNewProperties.put("x2", shapeToMove.getProperties().get("x2") + Math.abs(Double.valueOf(newPositionX.getText()) - shapeToMove.getPosition().x));
+//                lineSegmentNewProperties.put("y2", Double.valueOf(newPositionY.getText()));
+                lineSegmentNewProperties.put("y2", shapeToMove.getProperties().get("y2") + Math.abs(Double.valueOf(newPositionY.getText()) - shapeToMove.getPosition().y));
+                shapeToMove.setProperties(lineSegmentNewProperties);
+            }
             Point position = new Point(Integer.parseInt(newPositionX.getText()), Integer.parseInt(newPositionY.getText()));
             shapeToMove.setPosition(position);
             mainWindow.refresh(canvas);

@@ -371,7 +371,7 @@ public class MainWindow extends javax.swing.JFrame implements DrawingEngine{
 
     private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveButtonActionPerformed
         // TODO add your handling code here:
-        JFileChooser chooser = new JFileChooser();
+        JFileChooser chooser = new JFileChooser("C:\\_minipaint");
         int r = chooser.showSaveDialog(null);
         if (r == JFileChooser.APPROVE_OPTION) {
             File f = chooser.getSelectedFile();
@@ -382,7 +382,7 @@ public class MainWindow extends javax.swing.JFrame implements DrawingEngine{
 
     private void loadButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loadButtonActionPerformed
         // TODO add your handling code here:
-        JFileChooser chooser = new JFileChooser();
+        JFileChooser chooser = new JFileChooser("C:\\_minipaint");
         int r = chooser.showDialog(null,"Load");
         if (r == JFileChooser.APPROVE_OPTION) {
             File f = chooser.getSelectedFile();

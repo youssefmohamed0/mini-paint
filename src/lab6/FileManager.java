@@ -2,16 +2,9 @@ package lab6;
 
 import java.awt.Color;
 import java.awt.Point;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Scanner;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.io.*;
+import java.util.*;
+import javax.swing.JOptionPane;
 
 public class FileManager {    
     private static Shape getShapeFromString(String lineRepresentation) {
@@ -65,6 +58,9 @@ public class FileManager {
             }
         }catch(FileNotFoundException e) {
             e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "File not Found","Error",2);
+        }catch(Exception e) {
+            JOptionPane.showMessageDialog(null, "Invalid file type","Error",2);
         }
     }
     public static void saveToFile(File f, MainWindow mainWindow) {
@@ -75,14 +71,9 @@ public class FileManager {
             for (int i = 0; i < mainWindow.getShapes().length; i++) {
                 writer.write(mainWindow.getShapes()[i].getLineRepresentation());
             }
-        } catch (IOException ex) {
-            Logger.getLogger(FileManager.class.getName()).log(Level.SEVERE, null, ex);
-        } finally {
-            try {
-                writer.close();
-            } catch (IOException ex) {
-                Logger.getLogger(FileManager.class.getName()).log(Level.SEVERE, null, ex);
-            }
+            writer.close();
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, "Failed to save file","Error",2);
         }
     }
 }

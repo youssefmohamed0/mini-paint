@@ -51,8 +51,9 @@ public class FileManager {
         return null;
     }
     public static void readFromFile(File f, MainWindow mainWindow) {
-        for (int i = 0; i < mainWindow.getShapes().length; i++) {
-            mainWindow.removeShape(mainWindow.getShapes()[i]);
+        Shape[] shapes = mainWindow.getShapes();
+        for (int i = 0; i < shapes.length; i++) {
+            mainWindow.removeShape(shapes[i]);
         }
         try {
             Scanner scan = new Scanner(f);

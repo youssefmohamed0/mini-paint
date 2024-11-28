@@ -12,6 +12,7 @@
   <Events>
     <EventHandler event="componentMoved" listener="java.awt.event.ComponentListener" parameters="java.awt.event.ComponentEvent" handler="formComponentMoved"/>
     <EventHandler event="componentResized" listener="java.awt.event.ComponentListener" parameters="java.awt.event.ComponentEvent" handler="formComponentResized"/>
+    <EventHandler event="windowDeiconified" listener="java.awt.event.WindowListener" parameters="java.awt.event.WindowEvent" handler="formWindowDeiconified"/>
   </Events>
   <AuxValues>
     <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
@@ -48,29 +49,29 @@
                               <EmptySpace max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="1" attributes="0">
-                              <Group type="103" groupAlignment="1" attributes="0">
-                                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
                                       <Component id="shapesList" alignment="0" max="32767" attributes="0"/>
                                       <Component id="jLabel2" alignment="0" min="-2" pref="220" max="-2" attributes="0"/>
-                                      <Group type="102" alignment="1" attributes="0">
-                                          <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="colorizeButton" alignment="0" min="-2" max="-2" attributes="0"/>
-                                              <Component id="moveButton" alignment="0" min="-2" pref="76" max="-2" attributes="0"/>
-                                          </Group>
-                                          <EmptySpace max="32767" attributes="0"/>
-                                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                              <Component id="removeButton" max="32767" attributes="0"/>
-                                              <Component id="resizeButton" max="32767" attributes="0"/>
-                                              <Component id="loadButton" alignment="0" max="32767" attributes="0"/>
-                                          </Group>
+                                  </Group>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="saveButton" min="-2" pref="77" max="-2" attributes="0"/>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Component id="loadButton" min="-2" pref="77" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="colorizeButton" min="-2" max="-2" attributes="0"/>
+                                          <Component id="resizeButton" min="-2" pref="77" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace min="-2" pref="66" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                          <Component id="removeButton" max="32767" attributes="0"/>
+                                          <Component id="moveButton" max="32767" attributes="0"/>
                                       </Group>
                                   </Group>
-                                  <Group type="102" alignment="1" attributes="0">
-                                      <Component id="saveButton" min="-2" pref="77" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="144" max="-2" attributes="0"/>
-                                  </Group>
                               </Group>
-                              <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <Component id="canvas1" min="-2" pref="720" max="-2" attributes="0"/>
@@ -83,20 +84,32 @@
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="1" attributes="0">
-              <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="drawLineButton" alignment="3" min="-2" pref="36" max="-2" attributes="0"/>
-                  <Component id="drawRectangleButton" alignment="3" min="-2" pref="36" max="-2" attributes="0"/>
-                  <Component id="drawSquareButton" alignment="3" min="-2" pref="36" max="-2" attributes="0"/>
-                  <Component id="drawCircleButton" alignment="3" min="-2" pref="36" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="drawLineButton" alignment="3" min="-2" pref="36" max="-2" attributes="0"/>
+                          <Component id="drawRectangleButton" alignment="3" min="-2" pref="36" max="-2" attributes="0"/>
+                          <Component id="drawSquareButton" alignment="3" min="-2" pref="36" max="-2" attributes="0"/>
+                          <Component id="drawCircleButton" alignment="3" min="-2" pref="36" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="saveButton" alignment="3" min="-2" pref="38" max="-2" attributes="0"/>
+                          <Component id="loadButton" alignment="3" min="-2" pref="38" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
               </Group>
-              <EmptySpace max="32767" attributes="0"/>
+              <EmptySpace pref="11" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                   <Group type="102" attributes="0">
+                      <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
                       <Component id="jLabel2" min="-2" pref="34" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="shapesList" min="-2" pref="34" max="-2" attributes="0"/>
-                      <EmptySpace max="32767" attributes="0"/>
+                      <EmptySpace min="-2" pref="75" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="removeButton" alignment="3" min="-2" pref="38" max="-2" attributes="0"/>
                           <Component id="colorizeButton" alignment="3" min="-2" pref="38" max="-2" attributes="0"/>
@@ -106,12 +119,7 @@
                           <Component id="moveButton" alignment="3" min="-2" pref="38" max="-2" attributes="0"/>
                           <Component id="resizeButton" alignment="3" min="-2" pref="38" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="saveButton" alignment="3" min="-2" pref="38" max="-2" attributes="0"/>
-                          <Component id="loadButton" alignment="3" min="-2" pref="38" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace min="-2" pref="204" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
                       <Component id="jLabel1" min="-2" pref="24" max="-2" attributes="0"/>
                   </Group>
                   <Component id="canvas1" min="-2" pref="720" max="-2" attributes="0"/>
